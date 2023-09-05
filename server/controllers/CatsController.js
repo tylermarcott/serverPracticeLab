@@ -11,6 +11,7 @@
 
 */
 
+import { catsService } from "../services/CatsService.js";
 import BaseController from "../utils/BaseController.js";
 import { logger } from "../utils/Logger.js";
 
@@ -23,7 +24,20 @@ export class CatsController extends BaseController {
 
     this.router // talking about the small hallway off of the big hallway (baseController route)
       .get('', this.getCats)
+    // .get('/:catName', this.getGetByName)
   }
+
+
+
+
+  // getGetByName(request, repsponse, next) {
+  //   try {
+  //     logger.log(request)
+  //     const cats = catsService.
+  //   } catch (error) {
+  //     next(error)
+  //   }
+  // }
 
 
   // NOTE: have to make sure to include all 3 of these every time I think!
@@ -36,10 +50,13 @@ export class CatsController extends BaseController {
     try {
       console.log('getting me some cats')
       logger.log(request)
+
+      const cats = catsService.getCats()
+      response.send(cats)
+
     } catch (error) {
       // NOTE: this sends user on to the next "hallway"
       next(error)
     }
   }
-
 }
