@@ -12,6 +12,7 @@
 */
 
 import BaseController from "../utils/BaseController.js";
+import { logger } from "../utils/Logger.js";
 
 
 
@@ -29,9 +30,12 @@ export class CatsController extends BaseController {
   // NOTE: request, is an object representing the incoming request from a user
   // NOTE: response, is an object for you to manipulate and use to send responses the requestor
   // NOTE: next, is how we kick people back into the hallway.
+
+  // NOTE: type into browser localhost:3000, then copy paste that into postman link that automatically appends https to it, then add in this case api/cats
   getCats(request, response, next) {
     try {
       console.log('getting me some cats')
+      logger.log(request)
     } catch (error) {
       // NOTE: this sends user on to the next "hallway"
       next(error)
