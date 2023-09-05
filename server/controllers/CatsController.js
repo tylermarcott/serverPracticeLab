@@ -24,7 +24,7 @@ export class CatsController extends BaseController {
 
     this.router // talking about the small hallway off of the big hallway (baseController route)
       .get('', this.getCats)
-      .get('', this.createCat)
+      .post('', this.createCat)
   }
 
 
@@ -62,12 +62,15 @@ export class CatsController extends BaseController {
   // NOTE: next, is how we kick people back into the hallway.
 
   // NOTE: type into browser localhost:3000, then copy paste that into postman link that automatically appends https to it, then add in this case api/cats
-  getCats(request, response, next) {
+
+  // NOTE NOTE: make sure to to respin your server every time you make a change so the changes can take place. Also, make sure you are awaiting the service, or things will not work!
+
+  async getCats(request, response, next) {
     try {
       console.log('getting me some cats')
       logger.log(request)
 
-      const cats = catsService.getCats()
+      const cats = await catsService.getCats()
       response.send(cats)
 
     } catch (error) {

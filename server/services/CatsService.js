@@ -19,12 +19,12 @@ import { logger } from "../utils/Logger.js"
 class CatsService {
 
 
-  /* {
-      "name": kitty,
-      "breed": random cat,
+  /*{
+      "name": "kitty",
+      "breed": "random cat",
       "weight": 11,
-      "color": all colors
-  }*/
+      "color": "all colors"
+}*/
 
 
 
