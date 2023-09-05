@@ -24,20 +24,36 @@ export class CatsController extends BaseController {
 
     this.router // talking about the small hallway off of the big hallway (baseController route)
       .get('', this.getCats)
-    // .get('/:catName', this.getGetByName)
+      .get('', this.createCat)
+  }
+
+
+
+  async createCat(request, response, next) {
+    try {
+      logger.log('creating cat', request.body)
+
+      const cat = await catsService.createCat(request.body)
+
+      response.send(cat)
+
+    } catch (error) {
+      next(error)
+    }
   }
 
 
 
 
-  // getGetByName(request, repsponse, next) {
-  //   try {
-  //     logger.log(request)
-  //     const cats = catsService.
-  //   } catch (error) {
-  //     next(error)
-  //   }
-  // }
+  getCatByName(request, response, next) {
+    try {
+      logger.log(request.params)
+      const cats = catsService.getCatByName(request.params.catName)
+      response.send(cats)
+    } catch (error) {
+      next(error)
+    }
+  }
 
 
   // NOTE: have to make sure to include all 3 of these every time I think!

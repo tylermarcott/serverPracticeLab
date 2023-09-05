@@ -1,7 +1,7 @@
 import { Schema } from "mongoose";
 
 
-const Cat = new Schema(
+export const catSchema = new Schema(
   {
     name: { type: String, required: true, minlength: 2 },
     breed: { type: String, required: true, minLength: 3 },
@@ -9,3 +9,5 @@ const Cat = new Schema(
     color: { type: String, required: true }
   }
 )
+
+// to do a post request, in postman, in body, go to raw, change type to JSON, them type in the 
